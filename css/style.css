@@ -1,0 +1,121 @@
+#body {
+	background-color: #999999;
+}
+
+ol, ul {
+	 padding-left: 0px;
+}
+
+#drugofiltr {
+    margin: 0 auto;
+    margin-top: 133px;
+    border-radius: 10px;
+    width: 617px;
+    height: 491px;
+    background-color: #fff;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.drug-head div:nth-child(1) {
+	background-color: #ff8663;
+	padding:3px 15px;
+	color: #fff;
+} 
+
+.drug-head div:nth-child(2) {
+	background-color: #f0f0f0;
+	padding:10px 15px;		
+}
+
+.drug-head div:nth-child(2) input {
+	border-radius: 50px;
+	border:0px;
+	padding:5px;
+	width: 255px;
+}
+
+.drug-head div:nth-child(2) input:last-child {
+	float:right;
+}
+
+.drug-footer {
+	position: absolute;
+	width:100%;
+	bottom:0px;
+	background-color: #f0f0f0;
+	padding:10px 5px;		
+}
+
+#save {
+	float:right;
+	border-radius:10px;
+	border:0px;
+	padding:4px 9px;
+	color:#fff;
+	background-color: #ff8663;
+}
+
+.drug-section {
+	min-height:500px;
+	background-color: #fff;
+}
+
+.drug-section>div {
+	width:50%;
+	float:left;
+	min-height:500px;
+	background-color: #fff;	
+}
+
+.drug-section>div:nth-child(1) {
+	border-right:1px solid #ccc;
+}
+
+.drug-section>div>div:nth-child(1) {
+	background-color: #fff;
+	padding:7px 15px;
+	color: #000;
+	background-color: #fff;	
+	font-weight:bold;
+	border-bottom: 1px solid #ccc;;
+}
+
+.drug-section>div div:nth-child(1) p {
+	    margin: 0px;
+}
+
+.results {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 321px;
+	padding:12px 10px;	
+}
+
+.list-group-item {
+	border:0px;
+	font-weight:bold;
+}
+
+.list-group-item img {
+	border-radius:50%;
+	margin-right:5px;
+}
+
+.list-group-item:hover {
+	background-color: #ccc;
+}
+
+.vcenter {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+  height: 0px;
+}
+
+
+
+
+
+
