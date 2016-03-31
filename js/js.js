@@ -71,7 +71,6 @@
         var search = this.value.trim();
         var wraper = this.getAttribute('data-val');
         var curentName = document.getElementsByClassName(wraper);
-        console.log(curentName);
 
         console.log(wraper);
         for(var i = 0; i< curentName.length; i++) {
