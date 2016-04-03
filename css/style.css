@@ -114,8 +114,15 @@ ol, ul {
   height: 0px;
 }
 
+.frends-name {
+  display: table;
+  vertical-align: middle;
+  min-height: 45px;	
+}
 
-
-
+.title {
+	display: table-cell;
+  vertical-align: middle;	
+}
 
 

@@ -41,17 +41,14 @@
             if (response.error) {
                 reject(new Error(response.error.error_msg));
             } else { 
-                var template = '';    
-                for(var i = 0; i<response.response.length; i++) {
-                    template = template +  '<li data-name="' + response.response[i].first_name + ' ' + response.response[i].last_name + '" class="list-group-item " draggable="true"><div class="row"><div class="col-xs-3"><img draggable="false" src="' + response.response[i].photo_50 +'"/></div><div class="col-xs-7"><span class="title titleLeft"> ' + response.response[i].first_name + ' ' + response.response[i].last_name + '</span></div><div  class="col-xs-2 vcenter"><span class="glyphicon glyphicon-plus"></span></div></div></li>';
-                }; 
-
+                var source = itemTemplate.innerHTML,
+                  	templateFn = Handlebars.compile(source),
+                  	template = templateFn({list: response.response});
                 resultsLeftUl.innerHTML = template;
                 resolve(response);
             };
 
             if (localStorage.saveRight) {
-
             var savedListJSON = JSON.parse(localStorage.getItem("saveRight"));
 
 		        for(var i = 0; i< savedListJSON.length; i++) {
@@ -62,17 +59,15 @@
 			        		}
 		        		}
 		      	};
-    
-                resolve(response);               
+               resolve(response);               
             }
-
         });
     });
     
  }).then(function(response) {
     filterLeft.addEventListener('input', filter);
     filterRight.addEventListener('input', filter);
-    drugSection.addEventListener('click', sort);
+    drugSection.addEventListener('click', moveFiends);
     save.addEventListener('click', remember);            
     resultsRight.addEventListener('drop', drop);
     resultsRight.addEventListener('dragover', allowDrop);
@@ -86,12 +81,11 @@
 
         for(var i = 0; i< curentList.children.length; i++) {
         	var curent  = curentList.children[i];
-        	console.log(curent.dataset);
-           if((curent.dataset.name.toLowerCase()).indexOf(search) == -1) {
+	          if((curent.dataset.name.toLowerCase()).indexOf(search) == -1) {
                 curent.style.display = 'none';
-           } else {
+          	} else {
                 curent.style.display = 'block';
-           }        
+          	};        
         }  
     }
 
@@ -108,9 +102,7 @@
         chengeClass(tergetEl, 'toRight');
     }
 
-
-
-    function sort(e) {
+    function moveFiends(e) {
         if(e.target.classList.contains('glyphicon-plus')) 
         {
             tergetEl = e.target.closest('li')
@@ -122,7 +114,6 @@
             resultsLeftUl.appendChild(tergetEl); 
       			chengeClass(tergetEl, 'toLeft');                        
         } 
-
     }
 
     function remember() {
@@ -130,11 +121,10 @@
       	var saveRightUl = [];
         var saveList = document.getElementById('resultsRightUl');
         var saveLocalStorage = '';
-        		console.log(saveList);
-        for(var i = 0; i< saveList.children.length; i++) {
-        		saveRightUl[saveRightUl.length]  = saveList.children[i].dataset.name.toLowerCase();
-      	}
 
+        for(var i = 0; i< saveList.children.length; i++) {
+        		saveRightUl.push(saveList.children[i].dataset.name.toLowerCase());
+      	}
       	saveLocalStorage = JSON.stringify(saveRightUl); 
       	var saveRightUl = localStorage.setItem("saveRight", saveLocalStorage);
     }
@@ -143,9 +133,6 @@
  .catch(function(e) {
         alert('Ошибка: ' + e.message);
 });
-
-    
-
 
 function chengeClass(friend, direction) {
     var arrTitle = friend.querySelector('.title');
